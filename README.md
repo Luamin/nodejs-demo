@@ -8,7 +8,7 @@ This is the first nodejs project for practice.
  npm install argv
  
  //this will install all referenced modules
- npm instsll 
+ npm install
 ```
 
 You can check dependency in the package.json file. And see the reference in node_modules folder.  
