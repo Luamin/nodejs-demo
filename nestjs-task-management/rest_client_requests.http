@@ -1,0 +1,31 @@
+GET http://localhost:3000/tasks HTTP/1.1
+
+###
+GET http://localhost:3000/tasks?status=OPEN&search=learn HTTP/1.1
+
+### 
+
+POST http://localhost:3000/tasks HTTP/1.1
+content-type: application/json
+
+{
+    "title": "learn nestjs step 1",
+    "description": "Learn nestjs controller and services"
+}
+
+###
+
+GET http://localhost:3000/tasks/72dacbff-5d3b-4a60-a568-019fc745ef8f HTTP/1.1
+
+###
+
+DELETE http://localhost:3000/tasks/72dacbff-5d3b-4a60-a568-019fc745ef8f HTTP/1.1
+
+###
+
+PUT http://localhost:3000/tasks/4efdeae2-0aff-4237-8022-42d4454485a0/status  HTTP/1.1
+content-type: application/json
+
+{
+    "status": "IN_PROGRESS"
+}
