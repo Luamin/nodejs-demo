@@ -23,7 +23,7 @@ DELETE http://localhost:3000/tasks/72dacbff-5d3b-4a60-a568-019fc745ef8f HTTP/1.1
 
 ###
 
-PUT http://localhost:3000/tasks/4efdeae2-0aff-4237-8022-42d4454485a0/status  HTTP/1.1
+PUT http://localhost:3000/tasks/dc3b7eca-0dd7-48a3-a4c1-b9c297079415/status  HTTP/1.1
 content-type: application/json
 
 {
