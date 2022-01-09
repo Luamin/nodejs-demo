@@ -1,7 +1,7 @@
 GET http://localhost:3000/tasks HTTP/1.1
 
 ###
-GET http://localhost:3000/tasks?status=OPEN&search=learn HTTP/1.1
+GET http://localhost:3000/tasks?status=IN_PROGRESS&search=learn HTTP/1.1
 
 ### 
 
@@ -15,15 +15,15 @@ content-type: application/json
 
 ###
 
-GET http://localhost:3000/tasks/72dacbff-5d3b-4a60-a568-019fc745ef8f HTTP/1.1
+GET http://localhost:3000/tasks/70047639-8ffc-4c89-b9e4-f941af1f5ac8 HTTP/1.1
 
 ###
 
-DELETE http://localhost:3000/tasks/72dacbff-5d3b-4a60-a568-019fc745ef8f HTTP/1.1
+DELETE http://localhost:3000/tasks/6d242e61-ad67-41b5-ad6b-b069bbf876c4 HTTP/1.1
 
 ###
 
-PUT http://localhost:3000/tasks/dc3b7eca-0dd7-48a3-a4c1-b9c297079415/status  HTTP/1.1
+PUT http://localhost:3000/tasks/70047639-8ffc-4c89-b9e4-f941af1f5ac8/status  HTTP/1.1
 content-type: application/json
 
 {
