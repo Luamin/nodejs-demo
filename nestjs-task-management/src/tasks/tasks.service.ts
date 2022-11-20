@@ -5,6 +5,7 @@ import { SearchTasksDto } from './dto/search-task.dto';
 import { TasksRepository } from './tasks.repository';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Task } from './task.entity';
+import {User} from "../auth/user.entity";
 
 @Injectable()
 export class TasksService {
@@ -13,12 +14,12 @@ export class TasksService {
     private tasksRepository: TasksRepository,
   ) {}
 
-  async getTasks(searchTasksDto: SearchTasksDto): Promise<Task[]> {
-    return this.tasksRepository.getTasks(searchTasksDto);
+  async getTasks(searchTasksDto: SearchTasksDto, user: User): Promise<Task[]> {
+    return this.tasksRepository.getTasks(searchTasksDto, user);
   }
 
-  async getTaskById(id: string): Promise<Task> {
-    const found = await this.tasksRepository.findOne(id);
+  async getTaskById(id: string, user: User): Promise<Task> {
+    const found = await this.tasksRepository.findOne({ where:{id, user}});
 
     if (!found) {
       throw new NotFoundException(`The task with ID "${id}" does not exist`);
@@ -26,19 +27,19 @@ export class TasksService {
     return found;
   }
 
-  createTask(createTaskDto: CreateTaskDto): Promise<Task> {
-    return this.tasksRepository.createTask(createTaskDto);
+  createTask(createTaskDto: CreateTaskDto, user: User): Promise<Task> {
+    return this.tasksRepository.createTask(createTaskDto, user);
   }
 
-  async deleteTaskById(id: string): Promise<void> {
-    const result = await this.tasksRepository.delete(id);
+  async deleteTaskById(id: string, user: User): Promise<void> {
+    const result = await this.tasksRepository.delete({id, user});
     if (result.affected === 0) {
       throw new NotFoundException(`The task with ID "${id}" does not exist`);
     }
   }
 
-  async updateTaskStatus(id: string, status: TaskStatus): Promise<Task> {
-    const task = await this.getTaskById(id);
+  async updateTaskStatus(id: string, status: TaskStatus, user: User): Promise<Task> {
+    const task = await this.getTaskById(id, user);
     task.status = status;
     this.tasksRepository.save(task);
     return task;
